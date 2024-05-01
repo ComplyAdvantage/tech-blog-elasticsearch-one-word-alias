@@ -1,0 +1,25 @@
+services:
+
+  setup:
+    build:
+      context: .
+    entrypoint: python3
+    command: src/setup.py
+    volumes:
+      - .:/app
+    depends_on:
+      - elasticsearch
+    profiles:
+      - setup
+
+  elasticsearch:
+    image: elasticsearch:8.8.0
+    environment:
+      ES_PORT: ${ELASTICSEARCH_PORT}
+      ELASTIC_PASSWORD:
+      KIBANA_PASSWORD:
+      discovery.type: single-node
+      xpack.security.enabled: false
+    ports:
+      - ${ELASTICSEARCH_PORT}:${ELASTICSEARCH_PORT}
+    restart: unless-stopped

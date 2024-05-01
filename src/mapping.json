@@ -1,0 +1,40 @@
+{
+  "dynamic": "strict",
+  "properties": {
+    "created_at": {
+      "type": "date"
+    },
+    "primary_name": {
+      "type": "keyword"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "type": {
+      "type": "keyword"
+    },
+    "country_code": {
+      "type": "keyword"
+    },
+    "addresses": {
+      "type": "text"
+    },
+    "aliases": {
+      "type": "nested",
+      "properties": {
+        "name": {
+          "type": "keyword"
+        },
+        "is_weak": {
+          "type": "boolean"
+        },
+        "word_count": {
+          "type": "integer"
+        },
+        "aml_type": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}
